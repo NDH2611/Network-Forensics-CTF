@@ -1,0 +1,61 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261014025752
+Username: DESKTOP-0MMLOKD\ADMIN
+RunAs User: DESKTOP-0MMLOKD\ADMIN
+Configuration Name: 
+Machine: DESKTOP-0MMLOKD (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\ADMIN\Downloads\Microsoft VS Code\2a59476c9b\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 12516
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\logs\rfcland-download-20261014-025752.txt
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+]633;D]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+]633;D]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>$url = "https://nevesnunes.github.io/blog/assets/writeups/UIUCTF2020/challenge.pcap"
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Get-Date -Format "yyyy-MM-dd HH:mm:ss zzz"
+2026-10-14 02:58:36 +07:00
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>$url
+https://nevesnunes.github.io/blog/assets/writeups/UIUCTF2020/challenge.pcap
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Test-Path ".\challenges\rfcland\challenge.pcap"
+False
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Invoke-WebRequest -Uri $url -OutFile ".\challenges\rfcland\challenge.pcap"
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+]633;D]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Get-Item ".\challenges\rfcland\challenge.pcap" | Select-Object FullName, Length, LastWriteTime | Format-List
+
+
+FullName      : C:\Network-Forensics-CTF\challenges\rfcland\challenge.pcap
+Length        : 562625
+LastWriteTime : 10/14/2026 2:59:10 AM
+
+
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Get-FileHash ".\challenges\rfcland\challenge.pcap" -Algorithm SHA256 | Format-List
+
+
+Algorithm : SHA256
+Hash      : CC6ADE6DAF825469D85A5FCC4EB6B0D9E76A97ED7A04200B022AE2EB3C62B8EE
+Path      : C:\Network-Forensics-CTF\challenges\rfcland\challenge.pcap
+
+
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cNetwork-Forensics-CTFPS C:\Network-Forensics-CTF> ]633;B
+PS>Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20261014030040
+**********************
