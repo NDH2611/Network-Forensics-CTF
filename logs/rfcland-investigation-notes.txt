@@ -81,3 +81,12 @@ Kết quả: 7/7 mẫu đã có padding ở cuối, nhưng số ký tự mang d�
 Giả thuyết: Một số payload liên quan có thể được phân biệt bằng IPv4 metadata
 
 Phép kiểm tra: Trích xuất header và thống kê giá trị cờ trên các gói phía gửi
+
+0:40 AM 10/15/2026
+Quan sát: 5/314 gói phía gửi có reserved bit bật; 309 gói còn lại không bật
+
+Giả thuyết: Bit này có thể được dùng để đánh dấu một nhóm dữ liệu liên quan
+
+Phép kiểm tra tiếp theo: Quan sát header trong Wireshark và lấy ID của 5 gói
+
+Giới hạn: Reserved bit bật chưa đủ chứng minh gói chứa flag hoặc lưu lượng độc hại
