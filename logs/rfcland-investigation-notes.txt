@@ -24,3 +24,7 @@ Câu hỏi tiếp theo: Hiện tượng này chỉ xảy ra ở stream 0 hay có
 
 Cách kiểm tra: Quan sát và kiểm tra thêm stream 1, giữ nguyên dữ liệu
 
+5:34 PM 10/14/2026
+Giả thuyết: Stream 1 có thể gặp bất thường Base64 tương tự stream 0
+
+Cách kiểm tra: Áp dụng cùng phép giải mã cho JSON của stream 1, không thêm hoặc loại bỏ ký tự.
