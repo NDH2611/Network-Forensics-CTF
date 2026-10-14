@@ -106,3 +106,12 @@ Cơ sở: Cùng có reserved bit bật; gói 669 có đầu JPEG và tiền tố
 Phép kiểm tra: Nối byte theo thứ tự 669 đến 746 vào file thử mới, so sánh mức độ đọc được của ảnh với mẫu 669 riêng lẻ
 
 Giới hạn: Ảnh mở được hoặc rõ hơn chưa chứng minh JPEG đầy đủ
+
+1:15 AM 10/15/2026
+Quan sát: Ghép 669 với 746 giúp nhiều dòng chữ rõ hơn, phần cuối vẫn mờ
+
+Giả thuyết: Dữ liệu gói 1565 có thể tiếp tục bổ sung cho ảnh
+
+Phép kiểm tra: Nối 669 với 746 với 1565 vào file thử mới và so sánh
+
+Giới hạn: Mẫu 1565 được giải mã sau thêm padding khả năng đọc flag và tính đầy đủ của JPEG phải đánh giá riêng
