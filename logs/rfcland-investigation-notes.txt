@@ -75,4 +75,9 @@ Giả thuyết: Chênh lệch là các dấu padding = đã có trong chuỗi. N
 
 Phép kiểm tra: Đọc thông báo lỗi đã lưu trong bảng khảo sát
 
+0:30 AM 10/15/2026
+Kết quả: 7/7 mẫu đã có padding ở cuối, nhưng số ký tự mang dữ liệu vẫn không hợp lệ về độ dài
 
+Giả thuyết: Một số payload liên quan có thể được phân biệt bằng IPv4 metadata
+
+Phép kiểm tra: Trích xuất header và thống kê giá trị cờ trên các gói phía gửi
