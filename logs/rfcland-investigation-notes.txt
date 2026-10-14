@@ -115,3 +115,21 @@ Giả thuyết: Dữ liệu gói 1565 có thể tiếp tục bổ sung cho ảnh
 Phép kiểm tra: Nối 669 với 746 với 1565 vào file thử mới và so sánh
 
 Giới hạn: Mẫu 1565 được giải mã sau thêm padding khả năng đọc flag và tính đầy đủ của JPEG phải đánh giá riêng
+
+1:20 AM 10/15/2026
+Kết quả: Ba mẫu đầu cho phép đọc đầy đủ chuỗi flag
+
+Giả thuyết: Hai mẫu được đánh dấu còn lại có thể bổ sung chi tiết ảnh
+
+Phép kiểm tra: Ghép cả năm mẫu theo thứ tự capture vào file mới, so sánh với ảnh ba mẫu
+
+Giới hạn: Đọc được flag không đồng nghĩa JPEG đã đầy đủ về cấu trúc
+
+1:26 AM 10/15/2026
+Quan sát: Ba mẫu đầu mở được; ghép cả năm mẫu không mở được bằng Photos
+
+Câu hỏi: Khi chỉ bổ sung gói 1712, trình xem có còn mở được không?
+
+Phép kiểm tra: Tạo file bốn mẫu, giữ nguyên các file thử trước
+
+Giới hạn: Thông báo của Photos chưa xác định nguyên nhân cấu trúc JPEG
