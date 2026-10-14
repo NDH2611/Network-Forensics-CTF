@@ -27,4 +27,20 @@ Cách kiểm tra: Quan sát và kiểm tra thêm stream 1, giữ nguyên dữ li
 5:34 PM 10/14/2026
 Giả thuyết: Stream 1 có thể gặp bất thường Base64 tương tự stream 0
 
-Cách kiểm tra: Áp dụng cùng phép giải mã cho JSON của stream 1, không thêm hoặc loại bỏ ký tự.
+Cách kiểm tra: Áp dụng cùng phép giải mã cho JSON của stream 1, không thêm hoặc loại bỏ ký tự
+
+5:44 PM 10/14/2026
+Giả thuyết: Stream 1 thiếu padding Base64
+
+Phép kiểm tra: Thêm padding vào bản sao trong bộ nhớ rồi giải mã
+
+Giới hạn: Giải mã thành công không chứng minh dữ liệu JPEG đầy đủ
+
+6:07 PM 10/14/2026
+Kết quả: Thêm == vào bản sao giúp giải mã được 979 byte
+
+Diễn giải: Kết quả phù hợp với giả thuyết chuỗi Base64 thiếu padding
+
+Giới hạn: Chưa chứng minh dữ liệu gốc đầy đủ hoặc ảnh JPEG hợp lệ
+
+Cách kiểm tra tiếp theo: Thử mở bản sao có đuôi .jpg bằng trình xem ảnh
