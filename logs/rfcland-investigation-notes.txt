@@ -65,3 +65,14 @@ Kết quả: 85 mẫu giải mã nguyên trạng, 149 mẫu giải mã sau thêm
 Giả thuyết: Một số payload có thể chứa các phần khác nhau của dữ liệu ảnh
 
 Cách kiểm tra tiếp theo: Xem mẫu có đồng thời marker đầu và cuối, đồng thời phân loại lỗi của 80 mẫu chưa giải mã
+
+0:19 AM 10/15/2026
+Quan sát: Có 7 mẫu chia 4 dư 2 hoặc 3 nhưng vẫn không giải mã được sau phép thử thêm padding
+
+Câu hỏi: Những mẫu này gặp lỗi ký tự, padding hay nguyên nhân khác?
+
+Giả thuyết: Chênh lệch là các dấu padding = đã có trong chuỗi. Nếu đúng, tính phần dư trên toàn chuỗi đã che khuất vấn đề: số ký tự mang dữ liệu vẫn chia 4 dư 1. Thêm = không bổ sung được phần dữ liệu đó
+
+Phép kiểm tra: Đọc thông báo lỗi đã lưu trong bảng khảo sát
+
+
