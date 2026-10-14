@@ -90,3 +90,19 @@ Giả thuyết: Bit này có thể được dùng để đánh dấu một nhóm
 Phép kiểm tra tiếp theo: Quan sát header trong Wireshark và lấy ID của 5 gói
 
 Giới hạn: Reserved bit bật chưa đủ chứng minh gói chứa flag hoặc lưu lượng độc hại
+
+0:57 AM 10/15/2026
+Giả thuyết: Gói 669 có thể chứa phần đầu của ảnh liên quan; các mẫu được đánh dấu khác có thể chứa dữ liệu tiếp theo
+
+Phép kiểm tra: Lưu riêng từng mẫu, ghi byte đầu/cuối và hash; thử mở riêng dữ liệu gói 669
+
+Giới hạn: Chưa xác nhận các mẫu thuộc cùng một ảnh hoặc thứ tự ghép
+
+1:05 AM 10/15/2026
+Giả thuyết: Dữ liệu gói 746 có thể nối tiếp phần ảnh trong gói 669
+
+Cơ sở: Cùng có reserved bit bật; gói 669 có đầu JPEG và tiền tố flag
+
+Phép kiểm tra: Nối byte theo thứ tự 669 đến 746 vào file thử mới, so sánh mức độ đọc được của ảnh với mẫu 669 riêng lẻ
+
+Giới hạn: Ảnh mở được hoặc rõ hơn chưa chứng minh JPEG đầy đủ
