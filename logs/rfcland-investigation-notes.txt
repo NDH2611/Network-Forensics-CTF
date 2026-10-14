@@ -44,3 +44,11 @@ Diễn giải: Kết quả phù hợp với giả thuyết chuỗi Base64 thiế
 Giới hạn: Chưa chứng minh dữ liệu gốc đầy đủ hoặc ảnh JPEG hợp lệ
 
 Cách kiểm tra tiếp theo: Thử mở bản sao có đuôi .jpg bằng trình xem ảnh
+
+6:12 PM 10/14/2026
+Quan sát: Microsoft Photos mở được ảnh 200 × 200, 979 byte. Ảnh mờ, có khối màu; chưa đọc được flag
+
+Giả thuyết: Dữ liệu có thể chỉ là một phần ảnh hoặc bị hỏng, chưa loại trừ khả năng ảnh vốn có chất lượng thấp
+
+Cách kiểm tra tiếp theo: Khảo sát dữ liệu phía gửi ở các stream còn lại, tìm mẫu có phần đầu ảnh và mẫu không có phần đầu ảnh
+
