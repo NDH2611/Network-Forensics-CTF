@@ -1,0 +1,17 @@
+4:07 PM 10/14/2026
+Quan sát: Capture có 2198 gói, 314 cuộc trao đổi TCP; stream 0 chứa {"data": "..."} và câu phản hồi
+
+Giả thuyết: Chuỗi data có thể là Base64
+
+Cách dự định kiểm tra: Thử giải mã nguyên trạng, nếu giải mã được ta sẽ xem dữ liệu thuộc loại gì; nếu lỗi, tìm nguyên nhân
+
+4:47 PM 10/14/2026
+Kết quả: JSON hợp lệ. Chuỗi data dài 1345 ký tự, độ dài chia 4 dư 1.
+Giải mã Base64 thất bại.
+
+Diễn giải: Chưa thể xác nhận toàn bộ chuỗi là Base64 hợp lệ.
+Chưa biết bất thường xuất hiện trong capture hay trong quá trình xuất file.
+
+Giả thuyết tiếp theo: File JSON xuất từ Wireshark có thể khác dữ liệu trong PCAP.
+Cách kiểm tra tiếp theo: Trích xuất cùng dữ liệu trực tiếp bằng TShark và đối chiếu.
+
