@@ -52,3 +52,16 @@ Giả thuyết: Dữ liệu có thể chỉ là một phần ảnh hoặc bị h
 
 Cách kiểm tra tiếp theo: Khảo sát dữ liệu phía gửi ở các stream còn lại, tìm mẫu có phần đầu ảnh và mẫu không có phần đầu ảnh
 
+6:19 PM 10/14/2026
+Câu hỏi: Các payload có cùng cấu trúc và cùng dấu hiệu JPEG không?
+
+Phép kiểm tra: Khảo sát JSON, Base64 nguyên trạng, phép thử padding và các marker đầu/cuối trên 314 mẫu
+
+Giới hạn: Marker phù hợp không chứng minh file hoàn chỉnh; chưa xử lý các chuỗi có độ dài chia 4 dư 1.
+
+6:26 PM 10/14/2026
+Kết quả: 85 mẫu giải mã nguyên trạng, 149 mẫu giải mã sau thêm padding, 80 mẫu chưa giải mã được. Có 41 dấu hiệu đầu JPEG và 14 dấu hiệu cuối JPEG
+
+Giả thuyết: Một số payload có thể chứa các phần khác nhau của dữ liệu ảnh
+
+Cách kiểm tra tiếp theo: Xem mẫu có đồng thời marker đầu và cuối, đồng thời phân loại lỗi của 80 mẫu chưa giải mã
