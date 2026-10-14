@@ -133,3 +133,17 @@ Câu hỏi: Khi chỉ bổ sung gói 1712, trình xem có còn mở được kh�
 Phép kiểm tra: Tạo file bốn mẫu, giữ nguyên các file thử trước
 
 Giới hạn: Thông báo của Photos chưa xác định nguyên nhân cấu trúc JPEG
+
+1:32 AM 10/15/2026
+Câu hỏi: Marker FF D9 có trong các bản ghép không, và nằm ở đâu?
+
+Phép kiểm tra: Tìm vị trí cặp byte FF D9 trong bản ba, bốn và năm mẫu
+
+Giới hạn: Tìm thấy marker không chứng minh JPEG hợp lệ; không tìm thấy marker chưa giải thích toàn bộ lỗi
+
+1:41 AM 10/15/2026
+Giả thuyết: Thiếu marker kết thúc có thể ảnh hưởng khả năng mở ảnh
+
+Phép kiểm tra: Thêm đúng FF D9 vào bản sao của ba file rồi mở bằng Photos
+
+Giới hạn: Đây là sửa chữa thử nghiệm có bổ sung byte; mở được ảnh chưa chứng minh đã khôi phục đúng toàn bộ dữ liệu gốc
