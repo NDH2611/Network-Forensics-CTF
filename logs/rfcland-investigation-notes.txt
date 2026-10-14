@@ -147,3 +147,8 @@ Giả thuyết: Thiếu marker kết thúc có thể ảnh hưởng khả năng 
 Phép kiểm tra: Thêm đúng FF D9 vào bản sao của ba file rồi mở bằng Photos
 
 Giới hạn: Đây là sửa chữa thử nghiệm có bổ sung byte; mở được ảnh chưa chứng minh đã khôi phục đúng toàn bộ dữ liệu gốc
+
+2:01 AM 10/15/2026
+Giả thuyết mới: Các trường data có thể là các đoạn của một chuỗi Base64 chung, giải mã từng đoạn với padding bổ sung rồi ghép byte có thể khác với ghép chuỗi trước rồi giải mã
+
+Cách kiểm tra dự kiến: Dùng các JSON đã trích xuất, so sánh hai cách xử lý; giữ nguyên dữ liệu đầu vào và các kết quả trước
