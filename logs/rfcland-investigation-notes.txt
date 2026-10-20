@@ -152,3 +152,13 @@ Giới hạn: Đây là sửa chữa thử nghiệm có bổ sung byte; mở đ�
 Giả thuyết mới: Các trường data có thể là các đoạn của một chuỗi Base64 chung, giải mã từng đoạn với padding bổ sung rồi ghép byte có thể khác với ghép chuỗi trước rồi giải mã
 
 Cách kiểm tra dự kiến: Dùng các JSON đã trích xuất, so sánh hai cách xử lý; giữ nguyên dữ liệu đầu vào và các kết quả trước
+
+12:38 PM 10/20/2026
+Nhận định phòng thủ RFCland
+1. Dấu hiệu để chọn nhóm lưu lượng có IPv4 Reserved Bit bật để điều tra: Giúp chọn nhóm gói nhỏ để kiểm tra sâu, bộ lọc trên toàn capture trả về 15 gói thuộc 5 TCP Stream, trong đó 5 gói mang payload
+
+2. Lý do xem cả gói không mang payload: Vì gói vẫn cho biết cách kết nối được thiết lập và phạm vi xuất hiện của dấu hiệu. Trong stream 95 Reserved Bit bật cả trên SYN và ACK hoàn tất bắt tay của client nên nếu chỉ xem gói mang dữ liệu thì sẽ bỏ sót đặc điểm này
+
+3. Bằng chứng mạnh hơn việc chỉ thấy Reserved Bit bật: Ghép giá trị trường data trong 5 payload JSON theo thứ tự frame tạo thành một chuỗi Base64, sau đó giải mã một lần, chuỗi tạo ra JPEG 4.661 byte hiển thị được flag và khi trích xuất lại từ PCAP thì thu được file giống từng byte và cùng SHA-256 với kết quả trước
+
+4. Điều chưa thể kết luận về một sự cố mạng thực tế từ capture CTF này: Khôi phục nội dung nhưng vẫn chưa thể xác định danh tính người thực hiện, máy tính có bị xâm nhập hay không, hoặc dữ liệu có được truyền trái phép hay không vì vậy cần đối chiếu thêm log máy trạm, tiến trình tạo kết nối và hoạt động được cho phép, Reserved Bit bật hoặc dữ liệu dùng Base64 riêng lẻ chưa đủ để kết luận có tấn công
