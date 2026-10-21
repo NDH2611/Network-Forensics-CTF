@@ -25,3 +25,14 @@ Kết quả: Cả 34 payload đều có đúng hai dấu hai chấm và phần g
 Giả thuyết mới: Flow Label có thể biểu thị vị trí ký tự trong thông điệp
 
 Cách kiểm tra: Chuyển Flow Label từ hex sang số nguyên, kiểm tra trùng/thiếu vị trí, rồi so sánh chuỗi theo thứ tự capture với chuỗi theo Flow Label tăng dần
+
+11:40 AM 10/21/2026
+Nhận định phòng thủ Routes Mark The Spot
+1. Dấu hiệu điều tra: Nhóm 34 gói IPv6 có cùng nguồn, đích và Next Header 59. Payload của cả 34 gói đều có hai dấu hai chấm, với một ký tự ở giữa
+
+2. Cơ chế khôi phục: Ký tự thông điệp nằm trong payload, Flow Label biểu thị vị trí trong challenge; sắp xếp theo giá trị số tăng dần cho phép khôi phục thông điệp, thứ tự capture không phải thứ tự thông điệp
+
+3. Cách điều tra đề xuất: Dùng bộ lọc để tìm ứng viên, nhóm theo nguồn và đích, kiểm tra cấu trúc payload và sự thay đổi Flow Label; nếu nghi ngờ sự cố thực tế, đối chiếu thêm log máy trạm và tiến trình phát sinh lưu lượng
+
+4. Hạn chế: IPv6, Next Header 59 hoặc Flow Label riêng lẻ chưa đủ chứng minh tấn công; bộ lọc có thể chọn lưu lượng hợp lệ và bỏ sót cách truyền dữ liệu dùng đặc điểm khác; Capture CTF chưa cho biết danh tính người thực hiện, máy có bị xâm nhập hay dữ liệu có được truyền trái phép hay không
+
