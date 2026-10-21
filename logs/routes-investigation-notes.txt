@@ -1,0 +1,20 @@
+10:35 AM 10/21/2026
+Quan sát: Capture có 5975 gói, có 34 gói IPv6 và Data
+
+Giả thuyết: Nhóm IPv6 có thể chứa dữ liệu cần kiểm tra thêm
+
+Cách kiểm tra: Lọc IPv6, quan sát địa chỉ, header và nội dung Data
+
+10:41 AM 10/21/2026
+Quan sát: Frame 88 có Flow Label 0x0001e, Payload Length 216, Next Header 59, Hop Limit 64, Data chứa nhiều ký tự chữ/số và có đoạn :n:
+
+Giả thuyết: Dấu hai chấm có thể phân chia payload thành các phần
+
+Cách kiểm tra: So sánh nội dung và Flow Label của các gói IPv6 tiếp theo
+
+10:47 AM 10/21/2026
+Quan sát: Frame 93 có Flow Label 0x0001a, Payload Length 221 byte và đoạn :_: trong payload; Frame 88 có đoạn :n:, hai gói cùng địa chỉ nguồn và đích
+
+Giả thuyết: Payload có cấu trúc phân cách bằng dấu hai chấm; phần giữa có thể mang thông tin cần trích xuất
+
+Cách kiểm tra: Trích xuất Flow Label và Data của toàn bộ 34 gói IPv6, kiểm tra cấu trúc từng payload

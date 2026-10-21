@@ -3,16 +3,15 @@ Quan sát: Capture có 2198 gói, 314 cuộc trao đổi TCP; stream 0 chứa {"
 
 Giả thuyết: Chuỗi data có thể là Base64
 
-Cách dự định kiểm tra: Thử giải mã nguyên trạng, nếu giải mã được ta sẽ xem dữ liệu thuộc loại gì; nếu lỗi, tìm nguyên nhân
+Cách kiểm tra dự kiến: Thử giải mã nguyên trạng, nếu giải mã được ta sẽ xem dữ liệu thuộc loại gì; nếu lỗi, tìm nguyên nhân
 
 4:47 PM 10/14/2026
-Kết quả: JSON hợp lệ. Chuỗi data dài 1345 ký tự, độ dài chia 4 dư 1
-Giải mã Base64 thất bại
+Kết quả: JSON hợp lệ. Chuỗi data dài 1345 ký tự, độ dài chia 4 dư 1, giải mã Base64 thất bại
 
-Diễn giải: Chưa thể xác nhận toàn bộ chuỗi là Base64 hợp lệ
-Chưa biết bất thường xuất hiện trong capture hay trong quá trình xuất file
+Diễn giải: Chưa thể xác nhận toàn bộ chuỗi là Base64 hợp lệ, chưa biết bất thường xuất hiện trong capture hay trong quá trình xuất file
 
 Giả thuyết tiếp theo: File JSON xuất từ Wireshark có thể khác dữ liệu trong PCAP
+
 Cách kiểm tra tiếp theo: Trích xuất cùng dữ liệu trực tiếp bằng TShark và đối chiếu
 
 5:15 PM 10/14/2026
@@ -32,7 +31,7 @@ Cách kiểm tra: Áp dụng cùng phép giải mã cho JSON của stream 1, kh�
 5:44 PM 10/14/2026
 Giả thuyết: Stream 1 thiếu padding Base64
 
-Phép kiểm tra: Thêm padding vào bản sao trong bộ nhớ rồi giải mã
+Cách kiểm tra: Thêm padding vào bản sao trong bộ nhớ rồi giải mã
 
 Giới hạn: Giải mã thành công không chứng minh dữ liệu JPEG đầy đủ
 
@@ -55,7 +54,7 @@ Cách kiểm tra tiếp theo: Khảo sát dữ liệu phía gửi ở các strea
 6:19 PM 10/14/2026
 Câu hỏi: Các payload có cùng cấu trúc và cùng dấu hiệu JPEG không?
 
-Phép kiểm tra: Khảo sát JSON, Base64 nguyên trạng, phép thử padding và các marker đầu/cuối trên 314 mẫu
+Cách kiểm tra: Khảo sát JSON, Base64 nguyên trạng, phép thử padding và các marker đầu/cuối trên 314 mẫu
 
 Giới hạn: Marker phù hợp không chứng minh file hoàn chỉnh; chưa xử lý các chuỗi có độ dài chia 4 dư 1.
 
@@ -73,28 +72,28 @@ Câu hỏi: Những mẫu này gặp lỗi ký tự, padding hay nguyên nhân k
 
 Giả thuyết: Chênh lệch là các dấu padding = đã có trong chuỗi. Nếu đúng, tính phần dư trên toàn chuỗi đã che khuất vấn đề: số ký tự mang dữ liệu vẫn chia 4 dư 1. Thêm = không bổ sung được phần dữ liệu đó
 
-Phép kiểm tra: Đọc thông báo lỗi đã lưu trong bảng khảo sát
+Cách kiểm tra: Đọc thông báo lỗi đã lưu trong bảng khảo sát
 
 0:30 AM 10/15/2026
 Kết quả: 7/7 mẫu đã có padding ở cuối, nhưng số ký tự mang dữ liệu vẫn không hợp lệ về độ dài
 
 Giả thuyết: Một số payload liên quan có thể được phân biệt bằng IPv4 metadata
 
-Phép kiểm tra: Trích xuất header và thống kê giá trị cờ trên các gói phía gửi
+Cách kiểm tra: Trích xuất header và thống kê giá trị cờ trên các gói phía gửi
 
 0:40 AM 10/15/2026
 Quan sát: 5/314 gói phía gửi có reserved bit bật; 309 gói còn lại không bật
 
 Giả thuyết: Bit này có thể được dùng để đánh dấu một nhóm dữ liệu liên quan
 
-Phép kiểm tra tiếp theo: Quan sát header trong Wireshark và lấy ID của 5 gói
+Cách kiểm tra tiếp theo: Quan sát header trong Wireshark và lấy ID của 5 gói
 
 Giới hạn: Reserved bit bật chưa đủ chứng minh gói chứa flag hoặc lưu lượng độc hại
 
 0:57 AM 10/15/2026
 Giả thuyết: Gói 669 có thể chứa phần đầu của ảnh liên quan; các mẫu được đánh dấu khác có thể chứa dữ liệu tiếp theo
 
-Phép kiểm tra: Lưu riêng từng mẫu, ghi byte đầu/cuối và hash; thử mở riêng dữ liệu gói 669
+Cách kiểm tra: Lưu riêng từng mẫu, ghi byte đầu/cuối và hash; thử mở riêng dữ liệu gói 669
 
 Giới hạn: Chưa xác nhận các mẫu thuộc cùng một ảnh hoặc thứ tự ghép
 
@@ -103,7 +102,7 @@ Giả thuyết: Dữ liệu gói 746 có thể nối tiếp phần ảnh trong g
 
 Cơ sở: Cùng có reserved bit bật; gói 669 có đầu JPEG và tiền tố flag
 
-Phép kiểm tra: Nối byte theo thứ tự 669 đến 746 vào file thử mới, so sánh mức độ đọc được của ảnh với mẫu 669 riêng lẻ
+Cách kiểm tra: Nối byte theo thứ tự 669 đến 746 vào file thử mới, so sánh mức độ đọc được của ảnh với mẫu 669 riêng lẻ
 
 Giới hạn: Ảnh mở được hoặc rõ hơn chưa chứng minh JPEG đầy đủ
 
@@ -112,7 +111,7 @@ Quan sát: Ghép 669 với 746 giúp nhiều dòng chữ rõ hơn, phần cuối
 
 Giả thuyết: Dữ liệu gói 1565 có thể tiếp tục bổ sung cho ảnh
 
-Phép kiểm tra: Nối 669 với 746 với 1565 vào file thử mới và so sánh
+Cách kiểm tra: Nối 669 với 746 với 1565 vào file thử mới và so sánh
 
 Giới hạn: Mẫu 1565 được giải mã sau thêm padding khả năng đọc flag và tính đầy đủ của JPEG phải đánh giá riêng
 
@@ -121,7 +120,7 @@ Kết quả: Ba mẫu đầu cho phép đọc đầy đủ chuỗi flag
 
 Giả thuyết: Hai mẫu được đánh dấu còn lại có thể bổ sung chi tiết ảnh
 
-Phép kiểm tra: Ghép cả năm mẫu theo thứ tự capture vào file mới, so sánh với ảnh ba mẫu
+Cách kiểm tra: Ghép cả năm mẫu theo thứ tự capture vào file mới, so sánh với ảnh ba mẫu
 
 Giới hạn: Đọc được flag không đồng nghĩa JPEG đã đầy đủ về cấu trúc
 
@@ -130,21 +129,21 @@ Quan sát: Ba mẫu đầu mở được; ghép cả năm mẫu không mở đư
 
 Câu hỏi: Khi chỉ bổ sung gói 1712, trình xem có còn mở được không?
 
-Phép kiểm tra: Tạo file bốn mẫu, giữ nguyên các file thử trước
+Cách kiểm tra: Tạo file bốn mẫu, giữ nguyên các file thử trước
 
 Giới hạn: Thông báo của Photos chưa xác định nguyên nhân cấu trúc JPEG
 
 1:32 AM 10/15/2026
 Câu hỏi: Marker FF D9 có trong các bản ghép không, và nằm ở đâu?
 
-Phép kiểm tra: Tìm vị trí cặp byte FF D9 trong bản ba, bốn và năm mẫu
+Cách kiểm tra: Tìm vị trí cặp byte FF D9 trong bản ba, bốn và năm mẫu
 
 Giới hạn: Tìm thấy marker không chứng minh JPEG hợp lệ; không tìm thấy marker chưa giải thích toàn bộ lỗi
 
 1:41 AM 10/15/2026
 Giả thuyết: Thiếu marker kết thúc có thể ảnh hưởng khả năng mở ảnh
 
-Phép kiểm tra: Thêm đúng FF D9 vào bản sao của ba file rồi mở bằng Photos
+Cách kiểm tra: Thêm đúng FF D9 vào bản sao của ba file rồi mở bằng Photos
 
 Giới hạn: Đây là sửa chữa thử nghiệm có bổ sung byte; mở được ảnh chưa chứng minh đã khôi phục đúng toàn bộ dữ liệu gốc
 
