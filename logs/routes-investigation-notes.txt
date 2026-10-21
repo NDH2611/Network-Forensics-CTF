@@ -18,3 +18,10 @@ Quan sát: Frame 93 có Flow Label 0x0001a, Payload Length 221 byte và đoạn 
 Giả thuyết: Payload có cấu trúc phân cách bằng dấu hai chấm; phần giữa có thể mang thông tin cần trích xuất
 
 Cách kiểm tra: Trích xuất Flow Label và Data của toàn bộ 34 gói IPv6, kiểm tra cấu trúc từng payload
+
+11:01 AM 10/21/2026
+Kết quả: Cả 34 payload đều có đúng hai dấu hai chấm và phần giữa dài một ký tự
+
+Giả thuyết mới: Flow Label có thể biểu thị vị trí ký tự trong thông điệp
+
+Cách kiểm tra: Chuyển Flow Label từ hex sang số nguyên, kiểm tra trùng/thiếu vị trí, rồi so sánh chuỗi theo thứ tự capture với chuỗi theo Flow Label tăng dần
